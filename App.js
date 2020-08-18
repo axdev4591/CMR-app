@@ -1,3 +1,4 @@
+/*
 import { AppLoading, SplashScreen, Updates } from 'expo';
 import { Asset } from 'expo-asset';
 import Constants from 'expo-constants';
@@ -12,9 +13,9 @@ export default function App() {
     <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
       <MainScreen />
     </AnimatedAppLoader>
-  );
+  )
 }
-
+ 
 function AnimatedAppLoader({ children, image }) {
   const [isSplashReady, setSplashReady] = React.useState(false);
 
@@ -122,9 +123,63 @@ function MainScreen() {
           marginBottom: 15,
           fontWeight: 'bold',
         }}>
-        Pretty Cool!
+        First start bro!
       </Text>
       <Button title="Run Again" onPress={() => Updates.reload()} />
     </View>
   );
 }
+*/
+
+
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
+import React, {Component} from 'react';
+import TabScreen from './screens/TabScreen';
+/*
+export default class App extends Component {
+  render() {
+    return (
+      <TabScreen/>
+    );
+  }
+}*/
+
+import { Root } from 'native-base';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+    });
+    this.setState({ loading: false });
+  }
+render() {
+    if (this.state.loading) {
+      return (
+        <Root>
+          <AppLoading />
+        </Root>
+      );
+    } else {
+      return (
+        <Root>
+          <TabScreen />
+        </Root>
+      );
+    }
+  }
+}
+
