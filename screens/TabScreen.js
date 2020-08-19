@@ -9,11 +9,11 @@ export default class TabScreen extends Component {
     return (
       <Container>
       
-        <Header hasTabs> 
+        <Header  hasTabs> 
       
-      <Left/>
+      <Left />
         <Body>
-          <Title style={{color:'white'}}>         News App</Title>
+          <Title style={{color:'white'}}>         CMR News </Title>
         </Body>
       <Right />
 
